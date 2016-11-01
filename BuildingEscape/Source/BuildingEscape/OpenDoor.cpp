@@ -24,7 +24,7 @@ void UOpenDoor::BeginPlay()
 	FString ObjectName = GetOwner()->GetName();
 	UE_LOG(LogTemp, Warning, TEXT("I am a %s"), *ObjectName);
 
-	FRotator Rotation = FRotator(0.0f, -90.0f, 0.0f);
+	FRotator Rotation = FRotator(0.0f, 0.0f, 0.0f);
 	GetOwner()->SetActorRotation(Rotation);
 	
 }
