@@ -8,6 +8,7 @@ BuildingEscape/Content/StarterContent/
 
 # Visual studio generated files
 *.VC.db
+*.VC.VC.openDB
 .vs/
 
 # Misc
