@@ -3,7 +3,6 @@
 #include "BuildingEscape.h"
 #include "PositionReport.h"
 
-
 // Sets default values for this component's properties
 UPositionReport::UPositionReport()
 {
@@ -15,7 +14,6 @@ UPositionReport::UPositionReport()
 	
 }
 
-
 // Called when the game starts
 void UPositionReport::BeginPlay()
 {
@@ -26,7 +24,6 @@ void UPositionReport::BeginPlay()
 	UE_LOG(LogTemp, Warning, TEXT("%s is at %s"), *ObjectName, *ObjectPos)
 	
 }
-
 
 // Called every frame
 void UPositionReport::TickComponent( float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction )

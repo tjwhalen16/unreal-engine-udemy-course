@@ -3,7 +3,6 @@
 #include "BuildingEscape.h"
 #include "OpenDoor.h"
 
-
 // Sets default values for this component's properties
 UOpenDoor::UOpenDoor()
 {
@@ -15,26 +14,34 @@ UOpenDoor::UOpenDoor()
 	// ...
 }
 
-
 // Called when the game starts
 void UOpenDoor::BeginPlay()
 {
 	Super::BeginPlay();
 
-	FString ObjectName = GetOwner()->GetName();
-	UE_LOG(LogTemp, Warning, TEXT("I am a %s"), *ObjectName);
-
-	FRotator Rotation = FRotator(0.0f, 0.0f, 0.0f);
-	GetOwner()->SetActorRotation(Rotation);
-	
+	ActorThatOpens = GetWorld()->GetFirstPlayerController()->GetPawn();	
 }
 
+void UOpenDoor::OpenDoor()
+{
+	// Find the owning actor
+	FString ObjectName = GetOwner()->GetName();
+	// Create a rotations
+	FRotator Rotation = FRotator(0.0f, 0.0f, 0.0f);
+	// Set the door rotation
+	GetOwner()->SetActorRotation(Rotation);
+}
 
 // Called every frame
 void UOpenDoor::TickComponent( float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction )
 {
 	Super::TickComponent( DeltaTime, TickType, ThisTickFunction );
 
-	// ...
+	// Poll trigger volume every frame
+	if (PressurePlate->IsOverlappingActor(ActorThatOpens)) 
+	{
+		// If ActorThatOpens is in volume
+		OpenDoor();
+	}
 }
 
